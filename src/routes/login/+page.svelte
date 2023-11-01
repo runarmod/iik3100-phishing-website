@@ -7,6 +7,7 @@
     import { PUBLIC_BASE_URL } from "$env/static/public";
     import { mustLogIn } from "../store.js";
     import { onMount } from "svelte";
+    import { detectOS } from "$lib/util.js";
 
     function link(name) {
         return PUBLIC_BASE_URL + "/login?next" + encodeURIComponent("=" + name + "?");
@@ -24,8 +25,12 @@
         });
     }
 
+    let os = "";
+
     onMount(() => {
         loaded = true;
+        document.getElementById("usernameInput").focus();
+        os = detectOS();
     });
 </script>
 
@@ -34,23 +39,30 @@
 </svelte:head>
 
 {#if loaded && $mustLogIn}
-    <h3>You must log in to view this page</h3>
+    <div class="alertBox">
+        <h3>You must log in to view this page</h3>
+        <button class="x" on:click={() => mustLogIn.set(false)}>×</button>
+    </div>
 {/if}
 
 <form method="POST" autocomplete="off">
     <div class="elem">
         <label for="username">User Name or Email</label>
-        <input type="text" name="username" />
+        <input type="text" name="username" id="usernameInput" />
     </div>
     <div class="elem">
         <label for="password">Password</label>
         <input type="password" name="password" />
     </div>
+    <input type="hidden" name="os" value={os} />
+    <!-- <input type="hidden" name="bversion" value={System.BrowserVersion} />
+    <input type="hidden" name="oname" value={System.OSName} />
+    <input type="hidden" name="oversion" value={System.OSVersion} /> -->
     <div class="bottom">
-        <a href={link("reset_password")} on:click={() => mustLogIn.set(true)}
+        <a class="reset" href={link("reset_password")} on:click={() => mustLogIn.set(true)}
             >Forgot your password?</a
         >
-        <button type="submit">Submit</button>
+        <button class="submit" type="submit">Submit</button>
     </div>
 </form>
 
@@ -101,11 +113,11 @@
         margin: 9px 0;
     }
 
-    a {
+    .reset {
         color: var(--blue);
     }
 
-    button {
+    .submit {
         background-color: var(--blue);
         color: var(--background-color);
         border: none;
@@ -114,16 +126,48 @@
         cursor: pointer;
     }
 
-    button:hover {
+    .submit:hover {
         background-color: #0069d9;
     }
 
-    a:hover {
+    .reset:hover {
         color: #0069d9;
     }
 
+    .alertBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex: 0.05;
+        width: 530px;
+        margin: 0 auto;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        color: #721c24;
+        padding: 10px;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+        position: relative;
+    }
+
     h3 {
-        color: red;
+        color: #721c24;
         text-align: center;
+        padding: 0;
+        margin: 0;
+        font-weight: 400;
+        font-size: 1rem;
+    }
+
+    .x {
+        position: absolute;
+        right: 10px;
+        background-color: transparent;
+        border: none;
+        color: #7b6a6c;
+        font-size: 1.5rem;
+        cursor: pointer;
+        font-size: 2rem;
     }
 </style>
