@@ -1,36 +1,9 @@
-# SvelteKit Demo app
+# Hackingarena phishing site
 
-The official demo app for SvelteKit, hosted on Vercel.
+This is a phishing site for the ctf site of hackingarena. It is used to collect credentials from users, in addition to ip addresses, user agents and os.
 
-## Deploy Your Own
+It is used for an assignment in the course iik3100 at NTNU autumn 2023. The assignment is to create a phishing email which linkes to a website, and collect credentials from users (the lecturer).
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fvercel%2Ftree%2Fmain%2Fexamples%2Fsveltekit-1&project-name=sveltekit-vercel&repository-name=sveltekit-vercel&demo-title=SvelteKit%20%2B%20Vercel&demo-url=https%3A%2F%2Fsveltekit-template.vercel.app%2F)
+It is connected to Supabase, which is a database service. The database is used to store the credentials, and is accessed through the Supabase API.
 
-_Live Example: https://sveltekit-template.vercel.app_
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-## Speed Insights
-
-Once deployed on Vercel, you can benefit from [Speed Insights](https://vercel.com/docs/concepts/speed-insights) simply by navigating to Vercel's dashboard, clicking on the 'Speed Insights' tab, and enabling the product.
-
-You will get data once your application will be re-deployed and will receive visitors.
+This page can be viewed at [iik3100.runarmod.no](https://iik3100.runarmod.no) and is trying to look kind of like [iik3100.hackingarena.no](https://iik3100.hackingarena.no).
