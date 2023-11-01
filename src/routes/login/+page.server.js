@@ -23,6 +23,6 @@ export const actions = {
             });
         }
 
-        throw redirect(307, "https://iik3100.hackingarena.no/scoreboard");
+        throw redirect(303, "https://iik3100.hackingarena.no/scoreboard");
     }
 };
