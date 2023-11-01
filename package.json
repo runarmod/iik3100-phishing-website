@@ -33,6 +33,8 @@
     "type": "module",
     "dependencies": {
         "@auth/sveltekit": "^0.3.11",
+        "@fontsource/lato": "^5.0.17",
+        "@fontsource/raleway": "^5.0.15",
         "@supabase/supabase-js": "^2.38.4",
         "@vercel/analytics": "^1.1.1",
         "svelte-system-info": "^1.0.0"

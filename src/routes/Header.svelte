@@ -3,6 +3,8 @@
 
     import { PUBLIC_BASE_URL } from "$env/static/public";
     import { mustLogIn } from "./store.js";
+    import "@fontsource/lato/300.css";
+    import "@fontsource/lato/400.css";
 
     function link(name) {
         return PUBLIC_BASE_URL + "/login?next" + encodeURIComponent("=" + name + "?");
@@ -54,7 +56,7 @@
     header {
         background: var(--header-color);
         color: var(--text-color);
-        font-family: Lato, LatoOffline, sans-serif;
+        font-family: "Lato", "LatoOffline", sans-serif;
     }
 
     .wrapper {
@@ -106,6 +108,12 @@
         color: var(--text-color);
         text-decoration: none;
         transition: color 0.2s linear;
+    }
+
+    a {
+        font-family: "Lato", "LatoOffline", sans-serif;
+        font-weight: 400;
+        font-size: 1rem;
     }
 
     a:hover {

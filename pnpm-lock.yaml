@@ -8,6 +8,12 @@ dependencies:
   '@auth/sveltekit':
     specifier: ^0.3.11
     version: 0.3.11(@sveltejs/kit@1.18.0)(svelte@3.59.1)
+  '@fontsource/lato':
+    specifier: ^5.0.17
+    version: 5.0.17
+  '@fontsource/raleway':
+    specifier: ^5.0.15
+    version: 5.0.15
   '@supabase/supabase-js':
     specifier: ^2.38.4
     version: 2.38.4
@@ -311,6 +317,14 @@ packages:
     resolution: {integrity: sha512-LxcyMGxwmTh2lY9FwHPGWOHmYFCZvbrFCBZL4FzSSsxsRPuhrYUg/49/0KDfW8tnIEaEHtfmn6+NPN+1DqaNmA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
+
+  /@fontsource/lato@5.0.17:
+    resolution: {integrity: sha512-K9znoLAeUsm4tqp6zYv/oXBxhVDUeYPjRz6Yc7rKyBOKKOS9eXxkEcxD8pT9klnvCky4/pYXKJ9lab01LXYSEA==}
+    dev: false
+
+  /@fontsource/raleway@5.0.15:
+    resolution: {integrity: sha512-L1QfDwgBESrR55qYCQasxb2tONFhyiTsf07E5EZLH5vWL968GKXZu6fE+yk2uiOATVBzgY5QJTJ+HEmu/pJbuA==}
+    dev: false
 
   /@humanwhocodes/config-array@0.11.8:
     resolution: {integrity: sha512-UybHIJzJnR5Qc/MsD9Kr+RpO2h+/P1GhOwdiLPXK5TWk5sgTdu88bTD9UP+CKbPPh5Rni1u0GjAdYQLemG8g+g==}

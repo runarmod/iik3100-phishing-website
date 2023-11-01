@@ -1,6 +1,8 @@
 <script>
     import Header from "./Header.svelte";
     import "./styles.css";
+    import "@fontsource/lato";
+    import "@fontsource/raleway/500.css";
 </script>
 
 <div class="app">
@@ -58,6 +60,12 @@
         justify-content: center;
         align-items: center;
         font-family: Raleway, RalewayOffline, sans-serif;
+        font-weight: 500;
+        letter-spacing: 2px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
     }
 
     @media (min-width: 480px) {

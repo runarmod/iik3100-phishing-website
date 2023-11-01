@@ -55,9 +55,6 @@
         <input type="password" name="password" />
     </div>
     <input type="hidden" name="os" value={os} />
-    <!-- <input type="hidden" name="bversion" value={System.BrowserVersion} />
-    <input type="hidden" name="oname" value={System.OSName} />
-    <input type="hidden" name="oversion" value={System.OSVersion} /> -->
     <div class="bottom">
         <a class="reset" href={link("reset_password")} on:click={() => mustLogIn.set(true)}
             >Forgot your password?</a
@@ -101,6 +98,7 @@
         display: flex;
         flex-direction: column;
         width: 100%;
+        font-weight: bolder;
     }
 
     .bottom {
