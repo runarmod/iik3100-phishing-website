@@ -1,129 +1,150 @@
 <script>
-	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
+    // @ts-nocheck
+
+    import { PUBLIC_BASE_URL } from "$env/static/public";
+    import { mustLogIn } from "./store.js";
+
+    function link(name) {
+        return PUBLIC_BASE_URL + "/login?next" + encodeURIComponent("=" + name + "?");
+    }
+
+    function normal() {
+        return PUBLIC_BASE_URL;
+    }
 </script>
 
 <header>
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
-		</a>
-	</div>
+    <div class="wrapper">
+        <nav>
+            <ul>
+                <li>
+                    <a href={link("home")} on:click={() => mustLogIn.set(true)} class="home"
+                        >IIK3100 2023</a
+                    >
+                </li>
+                <li>
+                    <a href={link("users")} on:click={() => mustLogIn.set(true)}>Users</a>
+                </li>
+                <li>
+                    <a href={link("scoreboard")} on:click={() => mustLogIn.set(true)}>Scoreboard</a>
+                </li>
+                <li>
+                    <a href={link("challenges")} on:click={() => mustLogIn.set(true)}>Challenges</a>
+                </li>
+            </ul>
+        </nav>
 
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav>
-
-	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
-		</a>
-	</div>
+        <div class="corner">
+            <a
+                href={link("register")}
+                on:click={() => mustLogIn.set(true)}
+                class="log"
+                id="register"
+            >
+                Register
+            </a>
+            <a href={normal()} on:click={() => mustLogIn.set(false)} class="log" id="login">
+                Login
+            </a>
+        </div>
+    </div>
 </header>
 
 <style>
-	header {
-		display: flex;
-		justify-content: space-between;
-	}
+    header {
+        background: var(--header-color);
+        color: var(--text-color);
+        font-family: Lato, LatoOffline, sans-serif;
+    }
 
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
+    .wrapper {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
 
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
+        padding-top: 0.75rem;
+        padding-left: 3em;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
 
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
+    .home {
+        color: var(--background-color);
+        font-size: 1.25rem;
+        font-weight: 400;
+    }
 
-	nav {
-		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
+    nav {
+        display: flex;
+        justify-content: center;
+    }
 
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
+    ul {
+        position: relative;
+        padding: 0;
+        margin: 0;
+        height: 3em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        background-size: contain;
+    }
 
-	path {
-		fill: var(--background);
-	}
+    li {
+        position: relative;
+        height: 100%;
+    }
 
-	ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		height: 3em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
-	}
+    nav a {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        padding: 0 0.5rem;
+        color: var(--text-color);
+        text-decoration: none;
+        transition: color 0.2s linear;
+    }
 
-	li {
-		position: relative;
-		height: 100%;
-	}
+    a:hover {
+        color: var(--text-color-hover);
+    }
 
-	li[aria-current='page']::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-1);
-	}
+    .corner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 1rem;
+        gap: 30px;
+    }
 
-	nav a {
-		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 0.5rem;
-		color: var(--color-text);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-		transition: color 0.2s linear;
-	}
+    #register:before {
+        content: "";
+        background-image: url("/register.png");
+        background-size: 100% 100%;
+        display: inline-block;
 
-	a:hover {
-		color: var(--color-theme-1);
-	}
+        height: 20px;
+        width: 24px;
+
+        position: relative;
+        top: 3px;
+        right: 2px;
+    }
+
+    #login:before {
+        content: "";
+        background-image: url("/login.png");
+        background-size: 100% 100%;
+        display: inline-block;
+
+        height: 18px;
+        width: 22px;
+
+        position: relative;
+        top: 3px;
+        right: 2px;
+    }
 </style>
