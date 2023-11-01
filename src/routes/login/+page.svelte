@@ -1,17 +1,12 @@
 <script>
     // @ts-nocheck
-
     import { browser } from "$app/environment";
-    import { page } from "$app/stores";
-    import { webVitals } from "$lib/vitals";
-    import { PUBLIC_BASE_URL } from "$env/static/public";
+    import { detectOS } from "$lib/util.js";
+    import { link } from "$lib/util";
     import { mustLogIn } from "../store.js";
     import { onMount } from "svelte";
-    import { detectOS } from "$lib/util.js";
-
-    function link(name) {
-        return PUBLIC_BASE_URL + "/login?next" + encodeURIComponent("=" + name + "?");
-    }
+    import { page } from "$app/stores";
+    import { webVitals } from "$lib/vitals";
 
     let loaded = false;
 

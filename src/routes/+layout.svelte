@@ -1,8 +1,8 @@
 <script>
-    import Header from "./Header.svelte";
     import "./styles.css";
     import "@fontsource/lato";
     import "@fontsource/raleway/500.css";
+    import Header from "./Header.svelte";
 </script>
 
 <div class="app">

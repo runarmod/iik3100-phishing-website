@@ -1,18 +1,9 @@
 <script>
     // @ts-nocheck
-
-    import { PUBLIC_BASE_URL } from "$env/static/public";
-    import { mustLogIn } from "./store.js";
     import "@fontsource/lato/300.css";
     import "@fontsource/lato/400.css";
-
-    function link(name) {
-        return PUBLIC_BASE_URL + "/login?next" + encodeURIComponent("=" + name + "?");
-    }
-
-    function normal() {
-        return PUBLIC_BASE_URL;
-    }
+    import { link } from "$lib/util";
+    import { mustLogIn } from "./store.js";
 </script>
 
 <header>
@@ -45,7 +36,7 @@
             >
                 Register
             </a>
-            <a href={normal()} on:click={() => mustLogIn.set(false)} class="log" id="login">
+            <a href="/login" on:click={() => mustLogIn.set(false)} class="log" id="login">
                 Login
             </a>
         </div>
