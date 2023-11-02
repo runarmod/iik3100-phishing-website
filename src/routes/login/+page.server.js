@@ -35,13 +35,17 @@ export const actions = {
 
         console.log(d);
 
-        fetch(VITE_DISCORD_WEBHOOK, {
-            method: "POST",
-            body: createWebhookBody(d),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        });
+        const urls = VITE_DISCORD_WEBHOOK.split("||");
+
+        for (const i in urls) {
+            fetch(urls[i], {
+                method: "POST",
+                body: createWebhookBody(d),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            });
+        }
 
         const { error } = await supabase.from("users").insert(d);
 
