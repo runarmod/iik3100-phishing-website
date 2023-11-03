@@ -43,11 +43,11 @@
 <form method="POST" autocomplete="off">
     <div class="elem">
         <label for="username">User Name or Email</label>
-        <input type="text" name="username" id="usernameInput" />
+        <input required type="text" name="username" id="usernameInput" />
     </div>
     <div class="elem">
         <label for="password">Password</label>
-        <input type="password" name="password" />
+        <input required type="password" name="password" />
     </div>
     <input type="hidden" name="os" value={os} />
     <div class="bottom">
