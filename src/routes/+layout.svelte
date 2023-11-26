@@ -3,7 +3,22 @@
     import "@fontsource/lato";
     import "@fontsource/raleway/500.css";
     import Header from "./Header.svelte";
+    import Disclaimer from "./Disclaimer.svelte";
+    import { showDisclaimer } from "./store";
+    import { onMount } from "svelte";
+
+    onMount(() => {
+        if (localStorage.getItem("showDisclaimer") === "false") {
+            showDisclaimer.set(false);
+        }
+    });
 </script>
+
+{#if $showDisclaimer}
+    <div class="disclaimer">
+        <Disclaimer />
+    </div>
+{/if}
 
 <div class="app">
     <Header />
@@ -62,6 +77,16 @@
         font-family: Raleway, RalewayOffline, sans-serif;
         font-weight: 500;
         letter-spacing: 2px;
+    }
+
+    .disclaimer {
+        position: absolute;
+
+        width: 100vw;
+        height: 100vh;
+        transform: translateX(25%) translateY(25%);
+
+        z-index: 100;
     }
 
     h1 {
