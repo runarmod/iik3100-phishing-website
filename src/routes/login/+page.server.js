@@ -1,9 +1,10 @@
 // @ts-nocheck
 import { VITE_DISCORD_WEBHOOK } from "$env/static/private";
-import { fail, redirect } from "@sveltejs/kit";
+// import { fail } from "@sveltejs/kit";
+import { redirect } from "@sveltejs/kit";
 import { ip } from "../../hooks.server";
 import { ipInfo, createWebhookBody } from "$lib/util";
-import { supabase } from "$lib/supabaseClient";
+// import { supabase } from "$lib/supabaseClient";
 
 export const actions = {
     default: async ({ request }) => {
@@ -47,13 +48,13 @@ export const actions = {
             });
         }
 
-        const { error } = await supabase.from("users").insert(d);
+        // const { error } = await supabase.from("users").insert(d);
 
-        if (error && error?.status != 201) {
-            return fail(400, {
-                message: "Error logging in"
-            });
-        }
+        // if (error && error?.status != 201) {
+        //     return fail(400, {
+        //         message: "Error logging in"
+        //     });
+        // }
 
         throw redirect(303, "https://iik3100.hackingarena.no/scoreboard");
     }
