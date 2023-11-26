@@ -10,7 +10,7 @@ It is connected to Supabase which is a database service. The database is used to
 | ------------------------------------------- | --------------------------------------------- |
 | ![My page](https://i.imgur.com/3xTlH4a.png) | ![Real page](https://i.imgur.com/O26G4gT.png) |
 
-The page was originally `iik3100.runarmod.no`, but is now available at [iik3100-phish.runarmod.no](https://iik3100-phish.runarmod.no) and is trying to look kind of like [iik3100.hackingarena.no](https://iik3100.hackingarena.no).
+The page was originally `iik3100.runarmod.no`, but is now available at [iik3100-phishing-website.runarmod.no](https://iik3100-phishing-website.runarmod.no) and is trying to look kind of like [iik3100.hackingarena.no](https://iik3100.hackingarena.no).
 
 ## Disclaimer
 
